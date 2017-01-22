@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import aprslib
+import sys
 import json
 
+# reconfigure default encoding to utf8 for python2
+if sys.version_info.major < 3:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
 font7px={
     "lineheight":7,
@@ -839,7 +844,7 @@ def callback(packet):
             	                matrix.showText("APRS Message from " + packet['from'] +  ": " + packet['message_text'], True)
                                 oldMsgNo = newMsgNo
                                 oldSender = newSender
-                                #print("OK")
+                                print("Message flipped")
                         else:
                             matrix.showText("APRS Message from " + packet['from'] +  ": " + packet['message_text'], True)
                     else:
